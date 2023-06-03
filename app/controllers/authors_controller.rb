@@ -7,7 +7,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
   end
 
   def create
-    author = Author.create(author_params)
+    author = Author.create!(author_params)
     render json: author, status: :created
   end
 
@@ -18,7 +18,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
   end
 
   def render_unprocessable_entity_response
-    render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    render json: {errors: invalid.record.errors}, status: :unprocessable_entity
   end
   
 end
