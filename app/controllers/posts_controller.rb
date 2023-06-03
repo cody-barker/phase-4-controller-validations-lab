@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
 
-  def show!
+  def show
     post = Post.find(params[:id])
     
     render json: post
   end
 
-  def update!
+  def update
     post = Post.find(params[:id])
 
     post.update(post_params)
